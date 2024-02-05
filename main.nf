@@ -66,6 +66,6 @@ process SABAT_blast2bed{
 
     script:
     """
-    __main__.py blast2bed -i $blastn -e 3 -c 0.85 -l 4000 > ${sample}.bed
+    __main__.py blast2bed -i $blastn -e $params.b2b_exons -c $params.b2b_coverage -l $params.b2b_locus_size > ${sample}.bed
     """
 }
