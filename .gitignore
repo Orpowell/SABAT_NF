@@ -1,0 +1,4 @@
+work/
+test.csv
+.nextflow/
+.nextflow*
