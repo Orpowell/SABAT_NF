@@ -61,8 +61,11 @@ process SABAT_blast2bed{
 
     output:
 
+    publishDir "${params.outdir}"
+    path "${sample}.bed"
+
     script:
     """
-    __main__.py --help
+    __main__.py blast2bed -i $blastn -e 3 -c 0.85 -l 4000 > ${sample}.bed
     """
 }
