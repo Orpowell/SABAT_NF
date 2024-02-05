@@ -1,10 +1,6 @@
 workflow{
-    input.view()
+    input | MakeBlASTDB | dc_megaBLAST | SABAT_blast2bed
 
-    blastdb = MakeBlASTDB(input)
-    blastdb.view()
-    blasthit = dc_megaBLAST(blastdb)
-    blasthit.view()
     
 }
 
@@ -61,10 +57,12 @@ process dc_megaBLAST {
 process SABAT_blast2bed{
     input:
 
+    tuple val(sample), path(blastn)
+
     output:
 
     script:
     """
-
+    __main__.py --help
     """
 }
