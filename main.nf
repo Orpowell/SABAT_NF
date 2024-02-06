@@ -9,6 +9,9 @@ input = Channel.fromPath(params.input)
                .map{row -> [row.sample, file("${row.genome}")]}
 
 process MakeBlASTDB {
+
+    maxForks 5
+
     input:
     tuple val(sample), path(genome)
 
