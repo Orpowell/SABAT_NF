@@ -3,3 +3,4 @@ test.csv
 .nextflow/
 .nextflow*
 output/
+bin/__pycache__
