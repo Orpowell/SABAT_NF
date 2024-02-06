@@ -52,7 +52,7 @@ process dc_megaBLAST {
     -outfmt "6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore qlen" \
     -out ${sample}.blastn \
     -num_threads 100 \
-    -template_type coding_and_optimal \
+    -template_type coding \
     -template_length 16 
     """
 }
