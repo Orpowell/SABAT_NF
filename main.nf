@@ -35,6 +35,9 @@ process MakeBlASTDB {
 }
 
 process dc_megaBLAST {
+
+    maxForks 10
+
     input:
 
     tuple val(sample), path(blastdb)
@@ -51,7 +54,7 @@ process dc_megaBLAST {
     -db $blastdb/$sample \
     -outfmt "6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore qlen" \
     -out ${sample}.blastn \
-    -num_threads 100 \
+    -num_threads 8 \
     -template_type coding \
     -template_length 16 
     """
