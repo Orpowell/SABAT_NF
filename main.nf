@@ -10,6 +10,8 @@ input = Channel.fromPath(params.input)
 
 process MakeBlASTDB {
 
+    publishDir "${params.outdir}/${sample}"
+
     maxForks 5
 
     input:
@@ -61,14 +63,15 @@ process dc_megaBLAST {
 }
 
 process SABAT_blast2bed{
+    publishDir "${params.outdir}/${sample}"
+
     input:
 
-    tuple val(sample), path(blastn)
+        tuple val(sample), path(blastn)
 
     output:
 
-    publishDir "${params.outdir}"
-    path "${sample}.bed"
+        path "${sample}.bed"
 
     script:
     """
