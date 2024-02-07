@@ -63,7 +63,7 @@ process dc_megaBLAST {
 }
 
 process SABAT_blast2bed{
-    publishDir "${params.outdir}/${sample}"
+    publishDir "${params.outdir}/${sample}", mode: 'copy'
 
     input:
 
