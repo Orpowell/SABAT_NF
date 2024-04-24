@@ -78,5 +78,5 @@ The pipeline performs the following steps for each sample:
 2. BLAST target gene CDS against the genome BLASTDB (dc-MEGABLAST)
 3. Predict identified gene loci from BLAST output (SABAT blast2bed)
 
-You can generate the coding and protein sequences of your genes using the [SABAT assemble commands](https://github.com/Orpowell/SABAT) (not included in the pipeline) using the predicted gene loci.
+You can generate the coding and protein sequences of your genes using the [SABAT assemble commands](https://github.com/Orpowell/SABAT) (not included in the pipeline) and your predicted gene loci.
 
