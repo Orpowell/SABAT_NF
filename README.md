@@ -10,7 +10,7 @@ prediction of homologous genes using SABAT.
 - BLAST+ (2.12.0+) (Required for SABAT)
 - Python (v3.12.1) (Required for SABAT)
 - BioPython (v1.78) (Required for SABAT)
-- pandas (v2.1.4) (Required for SABAT)
+- Pandas (v2.1.4) (Required for SABAT)
 
 The following commands can be used to setup an anaconda environment with all the dependencies:
 
@@ -18,7 +18,7 @@ The following commands can be used to setup an anaconda environment with all the
     conda install -c bioconda biopython blast nextflow
     conda install pandas
 
-For devices with Apple Silicon (M1 or later) add the following parameter to the command when creating the environment:
+For devices with Apple Silicon (M1 or later) add the following parameter when creating the environment:
 
     CONDA_SUBDIR=osx-64 conda create -n SABAT python=3.12.1
 
@@ -30,7 +30,7 @@ For devices with Apple Silicon (M1 or later) add the following parameter to the 
     -resume \
     --input samplesheet.csv \
     --sequence cds.fasta \
-    --outdir path/to/output/
+    --outdir path/to/outdir/
     --b2b_exons 4 \
     --b2b_coverage 0.95 \
     --b2b_locus_size 4000 
@@ -42,15 +42,15 @@ For devices with Apple Silicon (M1 or later) add the following parameter to the 
 | --input   | Path to the CSV sample sheet (See: Preparing a Sample Sheet).  |
 | --sequence| Path to the FASTA file containing the CDS of the gene. |
 | --outdir | Path to the output directory. Note: A individual directory is made for each sample in the output directory. |
-| --b2b_exons| SABAT *blast2bed* parameter (See: [SABAT](https://github.com/Orpowell/SABAT)). |
-| --b2b_coverage| SABAT *blast2bed* parameter (See: [SABAT](https://github.com/Orpowell/SABAT)). |
-| --b2b_locus_size| SABAT *blast2bed* parameter (See: [SABAT](https://github.com/Orpowell/SABAT)). |
+| --b2b_exons | SABAT *blast2bed* parameter (See: [SABAT](https://github.com/Orpowell/SABAT)). |
+| --b2b_coverage | SABAT *blast2bed* parameter (See: [SABAT](https://github.com/Orpowell/SABAT)). |
+| --b2b_locus_size | SABAT *blast2bed* parameter (See: [SABAT](https://github.com/Orpowell/SABAT)). |
 
 ## Preparing a Sample Sheet
 
 The pipeline requires a CSV file containing 2 columns (see: test.csv):
 1. sample: The name of the sample (used name the output directory).
-2. genome: Path to the genome to analysed.
+2. genome: The path to the genome to analysed.
 
 Please note all sample names must be unique or results will be overwritten by the pipeline! 
 
@@ -78,5 +78,5 @@ The pipeline performs the following steps for each sample:
 2. BLAST target gene CDS against the genome BLASTDB (dc-MEGABLAST)
 3. Predict identified gene loci from BLAST output (SABAT blast2bed)
 
-Coding and Protein sequences of predicted genes can be assembled from the output of this pipeline using the [SABAT assemble commands](https://github.com/Orpowell/SABAT) (not included in the pipeline).
+You can generate the coding and protein sequences of your genes using the [SABAT assemble commands](https://github.com/Orpowell/SABAT) (not included in the pipeline) using the predicted gene loci.
 
